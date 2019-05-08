@@ -394,75 +394,75 @@ L?\"							{
 .								return -1;
 %%
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+// #include <fcntl.h>
+// #include <sys/types.h>
+// #include <sys/stat.h>
 
-void main() {
-	int yyret;
-	yyin = fopen("kw.c","r");
-	while ((yyret = yylex()) != TOKEOF) {
-		if (yyret == NUMBER) {
-			printf("NUMBER\t");
-			switch (yylval.number.type) {
-				case _CHAR:
-					printf("char %hhd\n",yylval.number.value.c);
-					break;
-				case _UCHAR:
-					printf("unsigned char%hhu\n",yylval.number.value.uc);
-					break;
-				case _SHORT:
-					printf("short %hd\n",yylval.number.value.s);
-					break;
-				case _USHORT:
-					printf("unsigned short%hu\n",yylval.number.value.us);
-					break;
-				case _INT:
-					printf("int %d\n",yylval.number.value.i);
-					break;
-				case _UINT:
-					printf("unsigned int %u\n",yylval.number.value.ui);
-					break;
-				case _LONG:
-					printf("long %ld\n",yylval.number.value.l);
-					break;
-				case _ULONG:
-					printf("unsigned long%lu\n",yylval.number.value.ul);
-					break;
-				case _LONGLONG:
-					printf("long long %lld\n",yylval.number.value.ll);
-					break;
-				case _ULONGLONG:
-					printf("unsigned long long %llu\n",yylval.number.value.ull);
-					break;
-				case _FLOAT:
-					printf("float %f\n",yylval.number.value.f);
-					break;
-				case _DOUBLE:
-					printf("double %f\n",yylval.number.value.d);
-					break;
-				case _LDOUBLE:
-					printf("long double %Lf\n",yylval.number.value.ld);
-					break;
-			}
-		}
-		else if (yyret == CHARLIT) {
-			printf("%c\n",yylval.charlit);
-		}
-		else if (yyret == STRING) {
-			printf("%s\n",yylval.string.string);
-		}
-		else if (yyret == IDENT) {
-			printf("IDENT\t%s\n",yylval.ident);
-		}
-		else if (yyret < 257 && yyret >= 0) {
-			printf("%c\n",yyret);
-		}
-		else if (yyret == -1) {
-			fprintf(stderr,"somethings wrong\n");
-		}
+// void main() {
+// 	int yyret;
+// 	yyin = fopen("kw.c","r");
+// 	while ((yyret = yylex()) != TOKEOF) {
+// 		if (yyret == NUMBER) {
+// 			printf("NUMBER\t");
+// 			switch (yylval.number.type) {
+// 				case _CHAR:
+// 					printf("char %hhd\n",yylval.number.value.c);
+// 					break;
+// 				case _UCHAR:
+// 					printf("unsigned char%hhu\n",yylval.number.value.uc);
+// 					break;
+// 				case _SHORT:
+// 					printf("short %hd\n",yylval.number.value.s);
+// 					break;
+// 				case _USHORT:
+// 					printf("unsigned short%hu\n",yylval.number.value.us);
+// 					break;
+// 				case _INT:
+// 					printf("int %d\n",yylval.number.value.i);
+// 					break;
+// 				case _UINT:
+// 					printf("unsigned int %u\n",yylval.number.value.ui);
+// 					break;
+// 				case _LONG:
+// 					printf("long %ld\n",yylval.number.value.l);
+// 					break;
+// 				case _ULONG:
+// 					printf("unsigned long%lu\n",yylval.number.value.ul);
+// 					break;
+// 				case _LONGLONG:
+// 					printf("long long %lld\n",yylval.number.value.ll);
+// 					break;
+// 				case _ULONGLONG:
+// 					printf("unsigned long long %llu\n",yylval.number.value.ull);
+// 					break;
+// 				case _FLOAT:
+// 					printf("float %f\n",yylval.number.value.f);
+// 					break;
+// 				case _DOUBLE:
+// 					printf("double %f\n",yylval.number.value.d);
+// 					break;
+// 				case _LDOUBLE:
+// 					printf("long double %Lf\n",yylval.number.value.ld);
+// 					break;
+// 			}
+// 		}
+// 		else if (yyret == CHARLIT) {
+// 			printf("%c\n",yylval.charlit);
+// 		}
+// 		else if (yyret == STRING) {
+// 			printf("%s\n",yylval.string.string);
+// 		}
+// 		else if (yyret == IDENT) {
+// 			printf("IDENT\t%s\n",yylval.ident);
+// 		}
+// 		else if (yyret < 257 && yyret >= 0) {
+// 			printf("%c\n",yyret);
+// 		}
+// 		else if (yyret == -1) {
+// 			fprintf(stderr,"somethings wrong\n");
+// 		}
 		
-		else
-			printf("%d\n",yyret);
-	}
-}
+// 		else
+// 			printf("%d\n",yyret);
+// 	}
+// }

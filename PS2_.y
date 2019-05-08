@@ -140,6 +140,7 @@
 	struct STR string;
 	char charlit;
 	int token;
+	char * ident;
 }
 
 %token IDENT NUMBER CHARLIT STRING SIZEOF
@@ -155,6 +156,10 @@
 %token CASE DEFAULT IF ELSE SWITCH WHILE DO FOR GOTO CONTINUE BREAK RETURN
 
 %start translation_unit
+
+%type<token> unary_operator assignment_operator storage_class_specifier type_specifier struct_or_union type_qualifier
+%type<a> primary_expression postfix_expression argument_expression_list unary_expression cast_expression multiplicative_expression additive_expression shift_expression relational_expression equality_expression and_expression exclusive_or_expression inclusive_or_expression logical_and_expression logical_or_expression conditional_expression assignment_expression expression constant_expression declaration declaration_specifiers init_declarator_list init_declarator struct_or_union_specifier struct_declaration_list struct_declaration specifier_qualifier_list struct_declarator_list  enum_specifier enumerator_list enumerator declarator direct_declarator pointer type_qualifier_list parameter_type_list parameter_list parameter_declaration identifier_list type_name abstract_declarator direct_abstract_declarator initializer initializer_list statement labeled_statement compound_statement declaration_list statement_list selection_statement iteration_statement jump_statement translation_unit external_declaration function_definition
+
 %%
 
 primary_expression
@@ -743,10 +748,6 @@ statement_list
 	| statement_list statement
 	;
 
-
-statement
-	: expression_statement;
-	;
 expression_statement
 	: ';'
 	| expression ';'
